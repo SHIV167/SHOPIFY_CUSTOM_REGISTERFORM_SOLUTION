@@ -1,0 +1,39 @@
+Go to: Store->Themes 
+
+On your theme select Actions->Edit Code
+
+Under Templates open customers/register.liquid. 
+
+and paste this code anywhere under </div>
+
+ 
+ <div class="form-group">
+                  <label for="loginPhone">{{ 'customer.register.Phone' | t }} {% if required != "" %}<sup>*</sup>{% endif %}</label>
+                  <input type="number" name="customer[phone]" class="form-control" id="loginPhone" placeholder="{{ 'customer.register.Phone_form' | t }}">
+                </div>
+
+ 
+----------------------------------------------------------------------------------------------------------------------------------------------------
+Save and go to Locals then open en.default.json (or your website default language file) 
+
+look for register (Ctrl+F then type register) and add the new parameters with their translations. 
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+To show the mobile number on the account page: 
+
+Under Templates open customers/account.liquid.  and add this code: 
+
+ 
+
+<tr>
+                <td>{{ 'customer.account.phone' | t }}</td>
+                <td>{{ customer.phone }}</td>
+              </tr>
+              
+Copy
+ 
+
+
+
+ 
