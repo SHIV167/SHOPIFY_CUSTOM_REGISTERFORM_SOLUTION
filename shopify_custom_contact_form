@@ -1,1 +1,79 @@
 
+{% form 'contact' %}
+
+          {% comment %}
+          Successful message
+          {% endcomment %}
+
+          {% if form.posted_successfully? %}
+          <p class="note form-success" {% if settings.enable_multilang %}data-translate="contact.form.post_success"{% endif %}>
+            {{ 'contact.form.post_success' | t }}
+          </p>
+          {% endif %}
+
+          {{ form.errors | default_errors }}
+
+          <div id="contactFormWrapper">          
+           
+<div class="form-group"><label for="name">Your Full Name *</label> <input type="text" name="name" id="name" class="required form-control" required="" /></div>
+
+
+            <div class="form-group">
+              <label for="contactFormEmail">
+                <span {% if settings.enable_multilang %}data-translate="contact.form.email"{%endif%}>
+                  {{ 'contact.form.email' | t }}
+                </span>
+                <em>*</em>
+              </label>
+              <input type="email" name="contact[email]" id="contactFormEmail" autocorrect="off" autocapitalize="off" placeholder="{{ section.settings.contact_your_email }}">
+            </div>
+
+            <div class="form-group">
+              <label for="contactFormPhone">
+                <span {% if settings.enable_multilang %}data-translate="contact.form.phone"{%endif%}>
+                  {{ 'contact.form.phone' | t }}
+                </span>
+              </label>
+              <input type="tel" name="contact[phone]" id="contactFormPhone" pattern="[0-9]*" placeholder="{{ section.settings.contact_phone_number }}">
+            </div>
+
+<div class="form-group"><label for="name">State *</label> <input type="text" class="required form-control" name="state" id="state" required="" /></div>
+
+
+<div class="form-group"><label for="name">City *</label> <input type="text" class="required form-control" name="city" id="city" required="" /></div>
+
+
+<div class="form-group"><label for="name">Pincode *</label> <input type="text" class="required form-control" name="pin" id="pin" required="" /></div>
+
+
+<div class="form-group"><label for="name">Name of the firm ( existing business )</label> <input type="text" class="required form-control" name="firmname" id="firmname" required="" /></div>
+
+
+<div class="form-group"><label for="name">Address of the firm</label> <input type="text" class="required form-control" name="address" id="address" required="" /></div>
+
+
+<div class="form-group"><label for="name">Type of business</label> <input type="text" class="required form-control" name="tbusiness" id="tbusiness" required="" /></div>
+
+            <div class="form-group"><label for="name">Select Investment Range</label><select placeholder="range" type="text" class="required text" id="range" name="range" style="color: #444; margin: 0; padding: 7px 10px; width: 100%; background: #efefef;">
+             <option value="">Select Investment Range</option>
+             <option value="5 lac - 10 lac">5 lac - 10 lac</option>
+             <option value="10 lac - 20 lac">10 lac - 20 lac</option>
+             <option value="20 lac - 30 lac">20 lac - 30 lac</option>
+             <option value="30 lac - 50 lac">30 lac - 50 lac</option>
+             <option value="50 lac - 1 cr">50 lac - 1 cr</option>
+           </select>
+		   </div>
+            <div class="form-group">
+              <label for="contactFormMessage">
+                <span {% if settings.enable_multilang %}data-translate="contact.form.message"{%endif%}>
+                  {{ 'contact.form.message' | t }}
+                </span>
+                <em>*</em>
+              </label>
+              <textarea rows="8" name="contact[body]" id="contactFormMessage" {% if settings.enable_multilang %}data-translate="contact.form.placeholder_message" translate-item="placeholder"{%endif%} placeholder="{{ 'contact.form.placeholder_message' | t }}"></textarea>
+            </div>
+
+            <input type="submit" class="btn" {% if settings.enable_multilang %}data-translate="contact.form.submit_contact"{%endif%} value="{{ 'contact.form.submit_contact' | t }}">
+          </div>
+          {% endform %}
+        
