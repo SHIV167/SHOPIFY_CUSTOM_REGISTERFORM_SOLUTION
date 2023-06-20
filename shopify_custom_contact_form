@@ -76,4 +76,87 @@
             <input type="submit" class="btn" {% if settings.enable_multilang %}data-translate="contact.form.submit_contact"{%endif%} value="{{ 'contact.form.submit_contact' | t }}">
           </div>
           {% endform %}
-        
+=======================================================SECOND PART========================================================================
+
+
+{% form 'contact' %}
+
+           {% comment %}
+          Successful message
+          {% endcomment %}
+
+          {% if form.posted_successfully? %}
+          <p class="note form-success" {% if settings.enable_multilang %}data-translate="contact.form.post_success"{% endif %}>
+            {{ 'contact.form.post_success' | t }}
+          </p>
+          {% endif %}
+  {{ form.errors | default_errors }}
+
+  <div class="first-name">
+    <label for="first-name">Your Full Name *</label>
+    <input type="text" name="contact[first_name]" id="first-name" required="" />
+  </div>
+
+  <div class="email">
+    <label for="email">Your Email Address *</label>
+    <input type="email" name="contact[email]" id="email" required="" />
+  </div>
+
+  <div class="phone">
+    <label for="phone">Mobile number*</label>
+    <input type="tel" name="contact[phone]" id="phone" required="" />
+  </div>
+
+  <div class="State">
+    <label for="State">State *</label>
+    <input type="text" name="contact[state]" id="State" required="" />
+  </div>
+
+  <div class="City">
+    <label for="city">City *</label>
+    <input type="text" name="contact[city]" id="City" required="" />
+  </div>
+
+    <div class="Pincode">
+    <label for="Pincode">Pincode *</label>
+    <input type="text" name="contact[pincode]" id="Pincode" required="" />
+  </div>
+
+  <div class="firm-name">
+    <label for="firm-name">Name of the Firm *</label>
+    <input type="text" name="contact[firm_name]" id="firm-name" required="" />
+  </div> 
+
+<div class="firm-address">
+    <label for="firm-address">Address of the Firm *</label>
+    <input type="text" name="contact[firm_address]" id="firm-address" required="" />
+  </div>
+
+<div class="business">
+    <label for="business">Type of Business *</label>
+    <input type="text" name="contact[business]" id="business" required="" />
+  </div>
+
+  
+  <div class="request-type">
+  <label for="request-type">Select Investment Range</label>
+  <select id="request-type" name="contact[request_type]">
+    <option>5 lac - 10 lac</option>
+    <option>10 lac - 20 lac</option>
+    <option>20 lac - 30 lac</option>
+    <option>30 lac - 50 lac</option>
+    <option>50 lac - 1 cr</option>
+  </select>
+  </div>
+
+
+  <div class="message">
+    <label for="message">Any other comments ; Please specify</label>
+    <textarea name="contact[body]" id="message"></textarea>
+  </div>
+
+  <div class="submit">
+    <input type="submit" value="Create" />
+  </div>
+{% endform %}
+
